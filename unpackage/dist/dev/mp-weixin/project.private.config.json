@@ -1,0 +1,36 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/search_list/index",
+          "pathName": "pages/search_list/index",
+          "query": "query=小米",
+          "scene": null
+        },
+        {
+          "name": "分类",
+          "pathName": "pages/category/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "pages/item/index",
+          "query": "id=542",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.content.data-v-2f754cba {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.content .left.data-v-2f754cba {
+  width: 198rpx;
+  height: 100%;
+  overflow: auto;
+}
+.content .left ._li.data-v-2f754cba {
+  height: 100rpx;
+  border-bottom: 1px solid #eee;
+  background-color: #f4f4f4;
+  text-align: center;
+  line-height: 100rpx;
+}
+.content .left .active.data-v-2f754cba {
+  color: #eb4450;
+  background-color: #fff;
+  position: relative;
+}
+.content .left .active.data-v-2f754cba::before {
+  position: absolute;
+  content: '';
+  top: 20rpx;
+  left: 0;
+  width: 8rpx;
+  height: 60rpx;
+  background-color: #eb4450;
+}
+.content .right.data-v-2f754cba {
+  padding: 20rpx 16rpx 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  height: 900rp100%x;
+  overflow: auto;
+}
+.content .right > ._img.data-v-2f754cba {
+  height: 180rpx;
+  width: 520rpx;
+}
+.content .cate2.data-v-2f754cba {
+  margin-bottom: 40rpx;
+}
+.content .cate2 ._ul.data-v-2f754cba {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.content .cate2 .title.data-v-2f754cba {
+  color: #e0e0e0;
+  height: 110rpx;
+  text-align: center;
+  line-height: 110rpx;
+}
+.content .cate3.data-v-2f754cba {
+  width: 33.33%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-bottom: 40rpx;
+}
+.content .cate3 > ._img.data-v-2f754cba {
+  width: 120rpx;
+  height: 120rpx;
+}
+
