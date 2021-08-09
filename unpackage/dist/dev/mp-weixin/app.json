@@ -5,7 +5,8 @@
     "pages/gouwu/index",
     "pages/my/index",
     "pages/search_list/index",
-    "pages/item/index"
+    "pages/item/index",
+    "pages/search/index"
   ],
   "subPackages": [],
   "window": {

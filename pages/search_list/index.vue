@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<div class="header">
+		<!-- <div class="header">
 			<icon type="search" size="32rpx" color="#c0c0c0"></icon>
 			<input type="text" value="小米" v-model="searchKey" @confirm="reload(searchKey)">
-		</div>
+		</div> -->
+		<SearchBar :query="query" search="doSearch"></SearchBar>
 		<!-- 过滤菜单 -->
 		<ul class="filter-menu">
 			<li :class="{active:index===actIndex}" v-for="(item,index) in meunList" :key="index"
@@ -26,8 +27,13 @@
 </template>
 
 <script>
+	// 导入搜索组件
+	import SearchBar from '../../components/SearchBar.vue'
 	let PAGE_SIZE = 6
 	export default {
+		components: {
+			SearchBar
+		},
 		data() {
 			return {
 				meunList: [
@@ -36,7 +42,6 @@
 					'价格'
 				],
 				actIndex: 0,
-				searchKey: '',
 				query: '',
 				goodList: [],
 				lastPage: false
@@ -51,7 +56,6 @@
 			this.pageNum = 1,
 			// console.log(options)
 			this.query = options.query
-			this.searchKey = options.query
 			this.queryGoods()
 		},
 		// 下拉刷新
@@ -65,6 +69,10 @@
 				this.queryGoods()
 		},
 		methods: {
+			doSearch(keyword) {
+				// console.log(keyword)
+				this.reload(keyword)
+			},
 			async queryGoods(searchKey) {
 				// 如果正在发请求中，直接return
 				if (this.isRequest || this.lastPage) {
@@ -89,6 +97,7 @@
 				}
 			},
 			reload(searchKey) {
+				console.log(searchKey)
 				this.pageNum = 1
 				this.goodList = []
 				this.isRequest = false
@@ -100,31 +109,37 @@
 					url: "../item/index?id=" + id
 				})
 			}
+		},
+		// onUnload() {
+		// 	console.log("小程序销毁")
+		// },
+		destroyed() {
+			console.log("vue销毁")
 		}
 	}
 </script>
 
 <style lang="less" scoped>
-	.header {
-		height: 120rpx;
-		padding: 30rpx 16rpx;
-		background-color: #eee;
+	// .header {
+	// 	height: 120rpx;
+	// 	padding: 30rpx 16rpx;
+	// 	background-color: #eee;
 
-		// box-sizing: border-box;
-		// position: relative;
-		icon {
-			position: absolute;
-			left: 48rpx;
-			top: 46rpx;
-		}
+	// 	// box-sizing: border-box;
+	// 	// position: relative;
+	// 	icon {
+	// 		position: absolute;
+	// 		left: 48rpx;
+	// 		top: 46rpx;
+	// 	}
 
-		input {
-			height: 60rpx;
-			background-color: #FFFFFF;
-			border-radius: 8rpx;
-			padding-left: 76rpx;
-		}
-	}
+	// 	input {
+	// 		height: 60rpx;
+	// 		background-color: #FFFFFF;
+	// 		border-radius: 8rpx;
+	// 		padding-left: 76rpx;
+	// 	}
+	// }
 
 	.filter-menu {
 		display: flex;

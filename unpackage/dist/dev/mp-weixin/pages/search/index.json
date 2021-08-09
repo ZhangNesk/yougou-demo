@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "搜索",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 260,
   "usingComponents": {
     "search-bar": "/components/SearchBar"
   }
