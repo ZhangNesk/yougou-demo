@@ -1,0 +1,59 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* iconfont */
+@font-face {
+  font-family: "iconfont"; /* Project id 2722994 */
+  src: url('//at.alicdn.com/t/font_2722994_ywuksunfcb.woff2?t=1628088376788') format('woff2'),
+       url('//at.alicdn.com/t/font_2722994_ywuksunfcb.woff?t=1628088376788') format('woff'),
+       url('//at.alicdn.com/t/font_2722994_ywuksunfcb.ttf?t=1628088376788') format('truetype');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-cart:before {
+  content: "\63";
+}
+.icon-share:before {
+  content: "\e6d1";
+}
+.icon-kefu:before {
+  content: "\e6fa";
+}
+/*每个页面公共css */
+._div,
+._p,
+input,
+._img,
+._span,
+._ul,
+._li {
+	/* color: #333333; */
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.text-line2 {
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
