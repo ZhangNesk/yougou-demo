@@ -49,11 +49,11 @@
 				<span>联系客服</span>
 				<button open-type="contact">联系客服</button>
 			</div>
-			<div class="icon-text">
+			<div class="icon-text" @click="toCart">
 				<span class="iconfont icon-cart"></span>
 				<span>购物车</span>
 			</div>
-			<div class="btn add-cart-btn">加入购物车</div>
+			<div class="btn add-cart-btn" @click="joinCart()">加入购物车</div>
 			<div class="btn buy-btn">立即购买</div>
 		</div>
 	</div>
@@ -69,7 +69,6 @@
 		},
 		onLoad(options) {
 			// this.good_id = options.id
-			console.log(options.id)
 			this.queryGoods(options.id)
 		},
 		// 分享转发
@@ -100,6 +99,24 @@
 					urls: urls
 				})
 				// console.log(url)
+			},
+			toCart() {
+				uni.switchTab({
+					url: '/pages/cart/index'
+				})
+			},
+			joinCart() {
+				// 创建要存入本地购物车的数组，本地购物车无数据则为空
+				let cart =uni.getStorageSync('cart') || {}
+				// 获取该商品的id
+				let goodId = this.goods.goods_id
+				cart[goodId] = {
+					// 当商品已存在时，数量加1
+					num: cart[goodId]?(cart[goodId].num+1) : 1,
+					checked: true
+				}
+				// 存入本地数据
+				uni.setStorageSync('cart', cart)
 			}
 		}
 	}

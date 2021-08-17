@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <SearchBar @confirm="toSearchList" :query="query"/>
+    <SearchBar @search="toSearchList" :query="query"></SearchBar>
     <div class="history-search">
       <div class="title">
         <span class="title">历史搜索</span>
-        <icon type="clear" size="18" @click="clearList"> </icon>
+        <icon type="clear" size="18" @click="clearAll"> </icon>
       </div>
       <ul>
-        <li v-for="item in keywordList" :key="item" @click="toSearchList(item)">{{item}}</li>
+        <li v-for="(item,index) in key_word" :key="index" @click="toSearchList(item,true)">{{item}}</li>
       </ul>
     </div>
   </div>
@@ -16,54 +16,60 @@
 <script>
 import SearchBar from '@/components/SearchBar'
 
-const KEYWORD_LIST = 'keyword_list'
 export default {
   data () {
     return {
-      keywordList: [],
-      query: ''
+		key_word: [],
+		query:''
     }
   },
   components: {
     SearchBar
   },
   onShow () {
-    this.keywordList = wx.getStorageSync(KEYWORD_LIST) || []
-    this.query = ''
+	this.key_word = uni.getStorageSync('keyWordList') || []
+  },
+  onHide() {
+  	this.query = ''
   },
   methods: {
-    clearList () {
-      wx.showModal({
-        title: '提示', // 提示的标题,
-        content: '你确定要清空历史搜索记录吗？', // 提示的内容,
-        showCancel: true, // 是否显示取消按钮,
-        cancelText: '取消', // 取消按钮的文字，默认为取消，最多 4 个字符,
-        cancelColor: '#000000', // 取消按钮的文字颜色,
-        confirmText: '确定', // 确定按钮的文字，默认为取消，最多 4 个字符,
-        confirmColor: '#3CC51F', // 确定按钮的文字颜色,
-        success: res => {
-          if (res.confirm) {
-            wx.removeStorageSync({ key: KEYWORD_LIST })
-            this.keywordList = []
-          }
-        }
-      })
-    },
-    toSearchList (data) {
-      this.query = data
-      // 先要去掉将添加的Keyword
-      let _keywordList = this.keywordList.filter(v => {
-        return v !== data
-      })
-
-      // keywordList头部添加关键字，并存储
-      _keywordList.unshift(data)
-      wx.setStorageSync(KEYWORD_LIST, _keywordList)
-      wx.navigateTo({
-        url: `/pages/search_list/main?query=${data}`
-      })
-    }
-  }
+	  toSearchList(keyword,noshow) {
+		  // 点击搜索记录不需要给query赋值
+		  if(!noshow){
+			  this.query = keyword
+		  }
+		  let _keyWord = this.key_word.filter(v => {
+			  return v !== keyword
+		  })
+		   _keyWord.unshift(keyword)
+		   // this.key_word = _keyWord
+		  // console.log(this.key_word)
+		  // 同时把搜索关键字存入Storage
+		  uni.setStorageSync('keyWordList',_keyWord)
+		  this.search(keyword)
+	  },
+	  // 跳转到搜索页面
+	  search(query) {
+		  uni.navigateTo({
+		  	url: '/pages/search_list/index?query=' + query
+		  })
+	  },
+	  //清除本地所有搜索关键词
+	  clearAll() {
+		  uni.showModal({
+		  	title: '提示',
+		  	content: '是否删除所有记录',
+			success: res => {
+				// 点击确认删除记录
+				if(res.confirm) {
+					uni.removeStorageSync('keyWordList')
+					// 重置this.key_word
+					this.key_word = []
+				}
+			}
+		  })
+	  }
+	},
 }
 </script>
 

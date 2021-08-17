@@ -16,9 +16,9 @@
 /* iconfont */
 @font-face {
   font-family: "iconfont"; /* Project id 2722994 */
-  src: url('//at.alicdn.com/t/font_2722994_ywuksunfcb.woff2?t=1628088376788') format('woff2'),
-       url('//at.alicdn.com/t/font_2722994_ywuksunfcb.woff?t=1628088376788') format('woff'),
-       url('//at.alicdn.com/t/font_2722994_ywuksunfcb.ttf?t=1628088376788') format('truetype');
+  src: url('//at.alicdn.com/t/font_2722994_jo3he0mn3y.woff2?t=1628997799185') format('woff2'),
+       url('//at.alicdn.com/t/font_2722994_jo3he0mn3y.woff?t=1628997799185') format('woff'),
+       url('//at.alicdn.com/t/font_2722994_jo3he0mn3y.ttf?t=1628997799185') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -26,6 +26,12 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.icon-check:before {
+  content: "\e63a";
+}
+.icon-uncheck:before {
+  content: "\e667";
 }
 .icon-cart:before {
   content: "\63";

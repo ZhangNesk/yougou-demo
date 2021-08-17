@@ -2,7 +2,7 @@
   "pages": [
     "pages/home/index",
     "pages/category/index",
-    "pages/gouwu/index",
+    "pages/cart/index",
     "pages/my/index",
     "pages/search_list/index",
     "pages/item/index",
@@ -30,7 +30,7 @@
         "selectedIconPath": "static/icons/category-o.png"
       },
       {
-        "pagePath": "pages/gouwu/index",
+        "pagePath": "pages/cart/index",
         "text": "购物车",
         "iconPath": "static/icons/cart.png",
         "selectedIconPath": "static/icons/cart-o.png"
@@ -43,5 +43,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

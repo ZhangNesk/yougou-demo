@@ -4,7 +4,7 @@
 			<icon type="search" size="32rpx" color="#c0c0c0"></icon>
 			<input type="text" value="小米" v-model="searchKey" @confirm="reload(searchKey)">
 		</div> -->
-		<SearchBar :query="query" search="doSearch"></SearchBar>
+		<SearchBar :query="query" @search="doSearch"></SearchBar>
 		<!-- 过滤菜单 -->
 		<ul class="filter-menu">
 			<li :class="{active:index===actIndex}" v-for="(item,index) in meunList" :key="index"
@@ -60,7 +60,6 @@
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
-			this.searchKey = this.query
 			this.reload()
 		},
 		// 上拉加载
@@ -97,7 +96,6 @@
 				}
 			},
 			reload(searchKey) {
-				console.log(searchKey)
 				this.pageNum = 1
 				this.goodList = []
 				this.isRequest = false
@@ -113,9 +111,9 @@
 		// onUnload() {
 		// 	console.log("小程序销毁")
 		// },
-		destroyed() {
-			console.log("vue销毁")
-		}
+		// destroyed() {
+		// 	console.log("vue销毁")
+		// }
 	}
 </script>
 

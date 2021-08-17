@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <input type="text" confirm-type="search" v-model.trim="query" @confirm="comfirmHandler">
+    <input type="text" confirm-type="search" v-model.trim="keyword" @confirm="comfirmHandler">
     <icon class="search-icon"
           type="search"
           size="16">
@@ -20,9 +20,12 @@ export default {
   props: ['query'],
   data () {
     return {
-      keyword: ''
+      keyword: this.query,
     }
   },
+  // created() {
+  // 	console.log(this.query)
+  // },
   methods: {
 		comfirmHandler() {
 		  // 不为空则吧keyword传到父组件
@@ -30,19 +33,23 @@ export default {
 			  this.$emit('search',this.keyword)
 		  }
 	  }
-  //   confirmHandler () {
-  //     // 为空不跳转
-  //     if (!this.keyword) {
-  //       return
-  //     }
-  //     this.$emit('confirm', this.keyword)
-  //   }
-  // },
-  // watch: {
-  //   query (newValue) {
-  //     this.keyword = newValue
-  //   }
-   }
+
+   },
+   // beforeMount() {
+   // 	console.log(this.query)
+   // },
+   // mounted() {
+   // 	console.log(this.query)
+   // },
+   // onLoad() {
+   // 		console.log('这里是onload')
+   // },
+   watch:{
+	   query (newValue) {
+		   this.keyword = newValue
+	   }
+   },
+
 }
 </script>
 
